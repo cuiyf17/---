@@ -1,0 +1,138 @@
+
+.command {
+  height: 30rpx;
+  padding: 30rpx 30rpx 10rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.command navigator {
+  background: linear-gradient(#fff, #fff);
+  /* border: 1px solid #fff; */
+  box-shadow: 1px 1px 5px #fce9e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 100rpx; 
+  font-size: 30rpx;
+  overflow: hidden;
+}
+.command navigator image {
+  height: 100%;
+}
+
+.sentence {
+  margin: 40rpx 30rpx;
+}
+
+.washcategory {
+  display: flex;
+  margin: 40rpx 40rpx;
+  color: #ff6666;
+  font-size: small;
+}
+.washcategory2 {
+  display: flex;
+  margin: 40rpx 40rpx;
+  color: #ff6666;
+  font-size: small;
+}
+
+.washname {
+  height: 160rpx;
+  padding: 10rpx 10rpx 10rpx 45rpx;
+  width: 95%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.washname text {
+  color: rgb(153, 153, 153);
+  font-size: x-small;
+}
+
+.sentence .title {
+  font-size: 36rpx;
+  text-align: center;
+  display: block;
+  color: #ff6666;
+}
+.sentence view {
+  padding: 30rpx 20rpx;
+  margin-top: 24rpx;
+  background: #fff;
+  height: 140rpx;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+}
+.sentence view .poet {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 2;
+  color: #555;
+}
+.sentence view .name {
+  text-align: right;
+}
+
+.choiceness {
+  margin: 40rpx 30rpx;
+}
+.choiceness .title {
+  font-size: 36rpx;
+  text-align: center;
+  display: block;
+  color: #ff6666;
+}
+.choiceness view.box {
+  padding: 30rpx 20rpx;
+  margin-top: 24rpx;
+  background: #fff;
+  height: 180rpx;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+}
+.choiceness view.box .poet {
+  text-overflow: -o-ellipsis-lastline;
+  height:46%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 2;
+  color: #666;
+}
+.choiceness view.box .name-like {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.choiceness view.box .name-like .name {
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.choiceness view.box .name-like .like {
+  font-size: 24rpx;
+  color: #f77373;
+}
+.choiceness view.box .name-like .like i {
+  color: #ff6666;
+}
+

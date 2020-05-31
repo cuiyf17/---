@@ -7,11 +7,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"enhance": true
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
-	"appid": "wx52fb98b9f4f67ae9",
-	"projectname": "%E5%B0%8F%E4%BE%9D",
-	"libVersion": "2.8.1",
+	"appid": "wxcbbc65a6166d9103",
+	"projectname": "minapp",
+	"libVersion": "2.6.6",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
