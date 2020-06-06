@@ -1,6 +1,7 @@
 //index.js
 const app = getApp()
-
+var day = ["今天","明天","后天"];
+var bmap = require('../../bmap-wx.min.js');
 const regeneratorRuntime = require('../../lib/regenerator-runtime/runtime.js')
 
 Page({
@@ -15,12 +16,108 @@ Page({
     num: 5,
     loading: false,
     isOver: false,
+    day : day,
+    ak: 'VwfXz17iAdcF8wWPHocvmzcSWEvuLGyy',
+  },
+  search: function () {
+    wx.navigateTo({
+      url: '../search/search'
+    })
+  },
+  onLoad: function() {
+    console.log('onLoad')
+    this.getLocation();
+    this.getSentence();
+    this.getList();
+    var BMap = new bmap.BMapWX({
+      ak: this.data.ak
+    })
+  },
+  getLocation: function () {
+    var that = this
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        console.log("lat:" + latitude + " lon:" + longitude);
+ 
+        that.getCity(latitude, longitude);
+      }
+    })
+  },
+  
+  //获取城市信息
+  getCity: function (latitude, longitude) {
+    var that = this
+    
+    var url = "https://api.map.baidu.com/reverse_geocoding/v3/?";
+    var params = {
+      ak: 'VwfXz17iAdcF8wWPHocvmzcSWEvuLGyy',
+      output: "json",
+      location: latitude + "," + longitude
+    }
+    wx.request({
+      url: url,
+      data: params,
+      success: function (res) {
+        var city = res.data.result.addressComponent.city;
+        var district = res.data.result.addressComponent.district;
+        var street = res.data.result.addressComponent.street;
+ 
+        that.setData({
+          city: city,
+          district: district,
+          street: street,
+        })
+ 
+        var descCity = city.substring(0, city.length - 1);
+        that.getWeahter(descCity);
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+ 
+  //获取天气信息
+  getWeahter: function (city) {
+    var that = this
+    var url = 'https://free-api.heweather.net/s6/weather/now?location='+city+'&key='+'212bd0415dbc4441be3063f8f2d4ec1f'
+    var params = {
+      city: city,
+      key: "212bd0415dbc4441be3063f8f2d4ec1f"
+    }
+    wx.request({
+      url: url,
+      data: params,
+      success: function (res) {
+        var tmp = res.data.HeWeather6[0].now.tmp;
+        var txt = res.data.HeWeather6[0].now.cond_txt;
+        var code = res.data.HeWeather6[0].now.cond_code;
+        //var qlty = res.data.HeWeather6[0].aqi.city.qlty;
+        var dir = res.data.HeWeather6[0].now.wind_dir;
+        var sc = res.data.HeWeather6[0].now.wind_sc;
+        var hum = res.data.HeWeather6[0].now.hum;
+        var fl = res.data.HeWeather6[0].now.fl;
+        var daily_forecast = res.data.HeWeather6[0].daily_forecast;
+        that.setData({
+          tmp: tmp,
+          txt: txt,
+          code: code,
+          //qlty: qlty,
+          dir: dir,
+          sc: sc,
+          hum: hum,
+          fl: fl,
+          daily_forecast: daily_forecast
+        })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
 
-  onLoad: function() {
-    this.getSentence()
-    this.getList()
-  },
+  
 
   async getSentence() {
     let sentencePage = await this.asyncGetSentencePage()
@@ -48,8 +145,8 @@ Page({
     const db = wx.cloud.database()
     const _ = db.command
     return new Promise((resolve, reject) => {
-      db.collection('gushici').where({
-        type: _.in(['诗', '词'])
+      db.collection('xihujianyi').where({
+        type: _.in(['guanjianzi'])
       }).skip(page).limit(1)
         .get({
           success (res) {
@@ -68,11 +165,11 @@ Page({
       wx.cloud.callFunction({
         name: 'collection_get',
         data: {
-          database: 'gushici_data',
+          database: 'xihujianyi',
           page: 1,
           num: 1,
           condition: {
-            type: 'setencePage'
+            type: 'caizhi'
           }
         },
       }).then(res => {
@@ -103,11 +200,11 @@ Page({
       wx.cloud.callFunction({
         name: 'collection_get',
         data: {
-          database: 'gushici',
+          database: 'xiaoyi',
           page,
           num,
           condition: {
-            tags: '唐诗三百首'
+            type: 'xihujianyi'
           }
         },
       }).then(res => {
@@ -150,7 +247,7 @@ Page({
 
   onShareAppMessage(res) {
     return {
-      title: '一起欣赏诗词之美',
+      title: '快来学习洗护建议吧',
       path: `pages/index/index`
     }
   },

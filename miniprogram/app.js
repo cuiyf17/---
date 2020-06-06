@@ -28,7 +28,7 @@ App({
         })
       }
     })
-
+  
 
     /**
      * 进入小程序，先判断用户是否已授权,
@@ -37,6 +37,20 @@ App({
      */
     wx.getSetting({
       success: res => {
+        if (!res.authSetting['scope.userLocation']) {// 如果是首次授权(undefined)或者之前拒绝授权(false)
+          wx.authorize({ // 发起请求用户授权
+            scope: 'scope.userLocation',
+            success() {// 用户允许了授权
+              wx.getLocation({ // 请求位置信息
+                type: 'gcj02',
+                success (res) {
+                  console.log(res, 95);//  得到位置信息（经纬度，速度等等），====>>>>>请求附近门店
+                }
+              })
+            }
+          })
+        }
+
         if (res.authSetting['scope.userInfo']) {
           console.log('已授权')
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
@@ -58,6 +72,18 @@ App({
           this.globalData.isLogin = ''
           this.globalData.avatarUrl = ''
           this.globalData.username = ''
+        }
+      }
+    })
+    wx.openSetting({
+      success (data) {
+        if (data.authSetting["scope.userLocation"] == true) {
+          wx.showToast({
+            title: '授权成功',
+            icon: 'success',
+            duration: 2000,
+            success () {}
+          })
         }
       }
     })

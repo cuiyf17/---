@@ -1,88 +1,74 @@
-
-.top {
-  background: #FF6262;
-  position: relative;
-  padding: 30rpx 20rpx;
+/**common css**/
+.w{
+  color: white;
 }
-.top .search {
-  border: 1px solid #fff;
-  box-sizing: border-box;
-  border-radius: 30rpx;
-  height: 60rpx;
-  padding: 0 20rpx;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 28rpx;
-
+.b{
+  font-weight: bold;
 }
-
-.top .search image {
-  height: 36rpx;
-  width: 36rpx;
-  margin-right: 20rpx;
+ 
+.l{
+  border: 1rpx solid #fff;
 }
-
-.top input {
-  border: none;
-  flex: 1;
-}
-.alphabeta {
-  background: #fff;
-  padding: 10rpx;
-  margin-bottom: 10rpx;
+ 
+.center{
   text-align: center;
+  margin: auto 0;
 }
-.alphabeta text {
-  display: inline-block;
-  line-height: 60rpx;
-  width: 60rpx;
-  text-align: center;
-  border: 1px solid #FF6262;
-  border-radius: 50%;
-  margin: 10rpx;
-  color: #555;
-  font-size: 28rpx;
-}
-.goJielong button {
-  font-size: 30rpx;
-  color: #FF6262;
-  border: 1px solid #FF6262;
-}
-.box {
-  padding: 30rpx 20rpx;
-}
-.box .item {
+ 
+.hor{
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  background: #fff;
-  height: 120rpx;
-  box-sizing: border-box;
-  margin-bottom: 20rpx;
 }
-.box .item-inner {
-  width: 80%;
-  font-size: 24rpx;
-  color: #555;
+ 
+.f50{
+  font-size: 50rpx;
+}
+ 
+/**index css**/
+ 
+ 
+.bg {
+  width: 100%;
+  height: 700rpx;
+}
+ 
+.temp{
+  font-size: 170rpx;
+}
+ 
+.container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 700rpx;
+  display: block;
+}
+ 
+.nowWeather{
+  padding: 60rpx;
+}
+ 
+.weahterDetail{
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 50rpx;
+}
+ 
+.forcast{
+  padding: 30rpx;
+  margin-left: 16rpx;
+  margin-right: 16rpx;
+  border-bottom: 1rpx solid #eee;
   justify-content: space-around;
 }
-
-.box .item-inner view {
-  background: #fff;
-  font-size: 30rpx;
-  color: #333;
-  padding-left: 20rpx;
-  line-height: 1.7;
-}
-.box .item-inner text {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding-left: 20rpx;
+ 
+.img{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
 }

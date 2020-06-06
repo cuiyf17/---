@@ -43,6 +43,8 @@ Page({
 
     let database = ''
     let condition = {}
+    
+    //let database = 'xiaoyi'
 
     switch(searchType)
       {

@@ -1,7 +1,66 @@
 <!-- index.wxml -->
 <scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+<image src="/images/bg.png" class="bg"></image>
+<view class="container">
+ 
+  <view class="nowWeather">
+    <view class="city w">{{city}} {{district}}</view>
+  
+  <!-- <view class="road w">{{street}}</view> -->
+  
+    <view class="temp w b">{{tmp}}°</view>
+    <view class="weather w">{{txt}} | 空气 {{qlty}}</view>
+    
+  <!--此处需要添加外线指数？-->
+  </view>
+  <view class="weahterDetail">
+    <view class="">
+      <view class="w center">{{dir}}</view>
+      <view wx:if="{{sc == '微风'}}" class="w b center f50">微风</view>
+      <view wx:else class="w b center f50">{{sc}}级</view>
+    </view>
+    <view class="l"></view>
+    <view class="">
+      <view class="w center">相对湿度</view>
+      <view class="w b center f50">{{hum}}%</view>
+    </view>
+    
+    <view class="l"></view>
+    <view class="">
+      <view class="w center">体感温度</view>
+      <view class="w b center f50">{{fl}}°</view>
+    </view>
+    
+  </view>
+ 
+</view>
+ 
+ 
+<view wx:for="{{daily_forecast}}" wx:for-index="i" wx:for-item="item">
+  <view class="hor forcast">
+    <view class="center">{{day[i]}}</view>
+    <view class="hor">
+      <image class="img" src="../../assets/icons/{{item.cond.code_d}}.png"></image>
+      <view class="center">{{item.cond.txt_d}}|{{qlty}}</view>
+    </view>
+    <view class="center">{{item.tmp.min}}°/ {{item.tmp.max}}°</view>
+  </view>
+</view>
 
-  <text class="washcategory">面料</text>
+
+<view class='page_row' bindtap="suo">
+    <view class="search">
+      <view class="df search_arr">
+        <icon class="searchcion" size='16' type='search'></icon>
+        <input class="sousuo" disabled placeholder="搜索你的洗护烦恼" bindtap='search'/>
+      </view>
+    </view>
+  </view>
+
+  <text class="washcategory">热门洗护问题</text>
+  <view class="divline"></view>
+
+
   <view class="command">
     <navigator url="/pages/idiom/idiom" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/mian.png' mode="aspectFit" ></image>
@@ -28,7 +87,7 @@
     <text >涤纶</text>
   </view>
 
-   <text class="washcategory2">种类</text>
+  
   <view class="command">
     <navigator url="/pages/idiom/idiom" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/mian.png' mode="aspectFit" ></image>
@@ -55,6 +114,10 @@
     <text >涤纶</text>
   </view>
   
+  <text class="washcategory">热门洗护问题</text>
+  <view class="divline">
+  </view>
+
    <!-- <view class="sentence">
     <text class="title">每日一句</text> 
     <view wx:if="{{sentence._id}}" data-id='{{sentence._id}}' bindtap='goDetail'>
@@ -64,7 +127,7 @@
     <view wx:if="{{!sentence._id}}" style='text-align:center;'>
       <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
     </view>
-  </view> -->
+  </view> 
   <view class="choiceness">
     <text class="title">洗护达人养成</text>
     <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-id='{{item._id}}' bindtap='goDetail'>
@@ -79,8 +142,11 @@
     <view class='box loading' wx:if="{{loading}}" style='text-align:center;'>
       <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
     </view>
+
     <view class='bottom' wx:if="{{isOver}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
       <text style='color:#666;'>--- 我是有底线的 ---</text>
     </view>
+
   </view>
+  -->
 </scroll-view>

@@ -3,7 +3,6 @@
   padding: 30rpx;
   height: 100%;
 }
-
 .search {
   box-sizing: border-box;
   border-radius: 50rpx;
