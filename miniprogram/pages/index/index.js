@@ -27,8 +27,6 @@ Page({
   onLoad: function() {
     console.log('onLoad')
     this.getLocation();
-    this.getSentence();
-    this.getList();
     var BMap = new bmap.BMapWX({
       ak: this.data.ak
     })
@@ -83,6 +81,7 @@ Page({
   getWeahter: function (city) {
     var that = this
     var url = 'https://free-api.heweather.net/s6/weather/now?location='+city+'&key='+'212bd0415dbc4441be3063f8f2d4ec1f'
+    var url2 = 'https://free-api.heweather.net/s6/weather/lifestyle?location='+city+'&key='+'212bd0415dbc4441be3063f8f2d4ec1f'
     var params = {
       city: city,
       key: "212bd0415dbc4441be3063f8f2d4ec1f"
@@ -98,8 +97,8 @@ Page({
         var dir = res.data.HeWeather6[0].now.wind_dir;
         var sc = res.data.HeWeather6[0].now.wind_sc;
         var hum = res.data.HeWeather6[0].now.hum;
-        var fl = res.data.HeWeather6[0].now.fl;
-        var daily_forecast = res.data.HeWeather6[0].daily_forecast;
+        var pcpn = res.data.HeWeather6[0].now.pcpn;
+        //var daily_forecast = res.data.HeWeather6[0].daily_forecast;
         that.setData({
           tmp: tmp,
           txt: txt,
@@ -108,8 +107,20 @@ Page({
           dir: dir,
           sc: sc,
           hum: hum,
-          fl: fl,
-          daily_forecast: daily_forecast
+          pcpn: pcpn,
+          //daily_forecast: daily_forecast
+        })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+    wx.request({
+      url: url2,
+      data: params,
+      success: function (res) {
+        var brf = res.data.HeWeather6[0].lifestyle[1].brf;
+        that.setData({
+          brf: brf,
         })
       },
       fail: function (res) { },
@@ -119,138 +130,6 @@ Page({
 
   
 
-  async getSentence() {
-    let sentencePage = await this.asyncGetSentencePage()
-    let res = await this.asyncGetSentence(sentencePage)
-    let {_id, content, dynasty, name, poet} = res.data[0]
-    let cont = ''
-    if (content.length == 2) {
-      cont = content[0] + content[1]
-    } else {
-      cont = content.slice(-2,-1)[0]
-    }
-
-    this.setData({
-      sentence: {
-        _id,
-        cont,
-        dynasty,
-        name,
-        poet
-      },
-    })
-  },
-
-  asyncGetSentence(page) {
-    const db = wx.cloud.database()
-    const _ = db.command
-    return new Promise((resolve, reject) => {
-      db.collection('xihujianyi').where({
-        type: _.in(['guanjianzi'])
-      }).skip(page).limit(1)
-        .get({
-          success (res) {
-            wx.hideLoading()
-            resolve(res)
-          },
-          fail (err) {
-            reject(err)
-          }
-        })
-    })
-  },
-
-  asyncGetSentencePage() {
-    return new Promise((resolve, reject) => {
-      wx.cloud.callFunction({
-        name: 'collection_get',
-        data: {
-          database: 'xihujianyi',
-          page: 1,
-          num: 1,
-          condition: {
-            type: 'caizhi'
-          }
-        },
-      }).then(res => {
-          let pageNum = res.result.data[0].pageNum
-          resolve(pageNum)
-        })
-        .catch(err=>{
-          reject(err)
-        })
-    })
-
-  },
-
-
-  lower(e) {
-    if (!this.data.loading) {
-      this.getList()
-    }
-  },
-
-  getList () {
-    if (!this.data.isOver) {
-      let {list, page, num} = this.data
-      let that = this
-      this.setData({
-        loading: true
-      })
-      wx.cloud.callFunction({
-        name: 'collection_get',
-        data: {
-          database: 'xiaoyi',
-          page,
-          num,
-          condition: {
-            type: 'xihujianyi'
-          }
-        },
-      }).then(res => {
-          if(!res.result.data.length) {
-            that.setData({
-              loading: false,
-              isOver: true
-            })
-          } else {
-            let res_data = res.result.data
-            list.push(...res_data)
-            that.setData({
-              list,
-              page: page + 1,
-              loading: false
-            })
-          }
-        })
-        .catch(console.error)
-    }
-  },
-
-  goDetail (e) {
-    let _id = e.currentTarget.dataset.id
-    wx.cloud.callFunction({
-      name: 'collection_update',
-      data: {
-        id: _id
-      },
-    }).then(res => {
-        this.setData({
-          isClose: false
-        })
-        wx.navigateTo({
-          url: `/pages/detail/detail?id=${e.currentTarget.dataset.id}`,
-        })
-      })
-      .catch(console.error)
-  },
-
-  onShareAppMessage(res) {
-    return {
-      title: '快来学习洗护建议吧',
-      path: `pages/index/index`
-    }
-  },
 
 
   /**

@@ -9,7 +9,7 @@
   <!-- <view class="road w">{{street}}</view> -->
   
     <view class="temp w b">{{tmp}}°</view>
-    <view class="weather w">{{txt}} | 空气 {{qlty}}</view>
+    <view class="weather w">{{txt}} | {{brf}}</view>
     
   <!--此处需要添加外线指数？-->
   </view>
@@ -27,8 +27,8 @@
     
     <view class="l"></view>
     <view class="">
-      <view class="w center">体感温度</view>
-      <view class="w b center f50">{{fl}}°</view>
+      <view class="w center">降水量</view>
+      <view class="w b center f50">{{pcpn}}mm</view>
     </view>
     
   </view>
@@ -62,11 +62,11 @@
 
 
   <view class="command">
-    <navigator url="/pages/idiom/idiom" open-type='navigate'>
+    <navigator url="/pages/mian/mian" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/mian.png' mode="aspectFit" ></image>
     </navigator>
-    <navigator url="/pages/menu/menu" open-type='switchTab'>
-      <image class='' style="border-radius:50%" src='/images/home/ma.png'></image>
+    <navigator url="/pages/maliao/maliao" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/ma.png' mode="aspectFit"></image>
     </navigator>
     <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/yangrong.png'></image>
@@ -89,11 +89,11 @@
 
   
   <view class="command">
-    <navigator url="/pages/idiom/idiom" open-type='navigate'>
+    <navigator url="/pages/mian/mian" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/mian.png' mode="aspectFit" ></image>
     </navigator>
-    <navigator url="/pages/menu/menu" open-type='switchTab'>
-      <image class='' style="border-radius:50%" src='/images/home/ma.png'></image>
+    <navigator url="/pages/maliao/maliao" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/ma.png' mode="aspectFit"></image>
     </navigator>
     <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/yangrong.png'></image>
@@ -114,8 +114,20 @@
     <text >涤纶</text>
   </view>
   
-  <text class="washcategory">热门洗护问题</text>
+  <text class="washcategory">我的提问</text>
   <view class="divline">
+  </view>
+
+  <view class="question">
+    <navigator url="/pages/mian/mian" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/solvedquestion.png' mode="aspectFit" ></image>
+    </navigator>
+    <navigator url="/pages/maliao/maliao" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/unsolvedquestion.png' mode="aspectFit"></image>
+    </navigator>
+    <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/raisequestion.png'></image>
+    </navigator>
   </view>
 
    <!-- <view class="sentence">

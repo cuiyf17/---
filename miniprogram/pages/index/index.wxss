@@ -152,6 +152,31 @@
   height: 100%;
 }
 
+.question {
+  height: 30rpx;
+  padding: 30rpx 0rpx 10rpx 60rpx;
+  width: 50%;
+  display: flex;
+  margin-top:-30rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.question navigator {
+
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 70rpx;
+  width: 70rpx; 
+  font-size: 30rpx;
+  overflow: hidden;
+}
+
+.question navigator img {
+  height: 100%;
+}
+
 .sentence {
   margin: 40rpx 30rpx;
 }
@@ -172,8 +197,9 @@
 }
 
 .washname {
-  height: 160rpx;
+  height: 100rpx;
   padding: 0rpx 10rpx 10rpx 85rpx;
+  margin-top:35rpx;
   width: 90%;
   box-sizing: border-box;
   display: flex;

@@ -16,11 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.idiom) {
-      this.loadDetailFromJielong(options.idiom)
-    } else {
-      this.loadDetail(options.id)
-    }
+    this.loadDetail(options.id)
   },
 
   loadDetail(id) {
@@ -52,8 +48,9 @@ Page({
       } else {
         this.setData({
           detail: res.result.data[0]
+          
         })
-
+        console.log(detail)
         wx.hideLoading()
       }
       that.setData({

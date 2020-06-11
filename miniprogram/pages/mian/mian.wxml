@@ -1,0 +1,6 @@
+<view>材质：{{caizhi}}</view>
+<view>晾晒：{{liangshai}}</view>
+<view>手洗：{{shouxi}}</view>
+<view>机洗：{{jixi}}</view>
+<view>干洗：{{ganxi}}</view>
+<view>具体内容：{{txt}}</view>
