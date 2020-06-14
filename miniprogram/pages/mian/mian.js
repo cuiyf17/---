@@ -8,6 +8,8 @@ Page({
     detail: {},
     database: 'Xiaoyi',
     _id: "000000000",
+    TabCur: 0,
+    scrollLeft:0
   },
 
   /**
@@ -16,7 +18,6 @@ Page({
   onLoad: function (options) {
     var that = this
     that.Load_jianyi()
-    console.log(that.data.liangshai)
   },
   Load_jianyi(){
     var that = this
@@ -52,6 +53,29 @@ Page({
         })  
         } 
         })
+        
+        db.collection("comment")
+      .where({blogid:that.data._id})
+      .field({
+        content: true,
+        commentdate: true,
+      })
+      .get({
+        success: function (res) {
+        var i = 0
+        var comments = new Array();
+        for(var i =0;i<res.data.length;i++){
+          var comment ={
+            content:res.data[i].content,
+            date:res.data[i].commentdate,
+          }
+          comments.push(comment)
+        }    
+        that.setData({
+        comments: comments,
+        })  
+        } 
+        })
       },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -64,7 +88,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    that.Load_jianyi()
   },
 
   /**
@@ -100,5 +125,27 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
+  tabSelect(e) {
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      scrollLeft: (e.currentTarget.dataset.id-1)*60
+    })
+  } ,
+
+  pagechange: function (e) {
+    if ("touch" === e.detail.source) {
+      let currentPageIndex = this.data.TabCur
+      currentPageIndex = (currentPageIndex + 1) % 3
+      this.setData({
+        TabCur: currentPageIndex
+      })
+    }
+  },
+
+
+
+
 })

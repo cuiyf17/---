@@ -1,5 +1,5 @@
 <!-- index.wxml -->
-<scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+<scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower"> 
 <image src="/images/bg.png" class="bg"></image>
 <view class="container">
  
@@ -68,14 +68,14 @@
     <navigator url="/pages/maliao/maliao" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/ma.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/yangrong.png'></image>
+    <navigator url="/pages/yangrong/yangrong" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/yangrong.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/xiehouyu/xiehouyu" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/zhensi.png'></image>
+    <navigator url="/pages/zhensi/zhensi" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/zhensi.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/miyu/miyu" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/dilun.png'></image>
+    <navigator url="/pages/dilun/dilun" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/dilun.png' mode="aspectFit"></image>
     </navigator>
   </view>
 
@@ -95,14 +95,14 @@
     <navigator url="/pages/maliao/maliao" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/ma.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/yangrong.png'></image>
+    <navigator url="/pages/yangrong/yangrong" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/yangrong.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/xiehouyu/xiehouyu" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/zhensi.png'></image>
+    <navigator url="/pages/zhensi/zhensi" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/zhensi.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/miyu/miyu" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/dilun.png'></image>
+    <navigator url="/pages/dilun/dilun" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/dilun.png' mode="aspectFit"></image>
     </navigator>
   </view>
 
@@ -119,10 +119,10 @@
   </view>
 
   <view class="question">
-    <navigator url="/pages/mian/mian" open-type='navigate'>
+    <navigator url="/pages/writequestion/writequestion" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/solvedquestion.png' mode="aspectFit" ></image>
     </navigator>
-    <navigator url="/pages/maliao/maliao" open-type='navigate'>
+    <navigator url="/pages/myquestion/myquestion" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/unsolvedquestion.png' mode="aspectFit"></image>
     </navigator>
     <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>

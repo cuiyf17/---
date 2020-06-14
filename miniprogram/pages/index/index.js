@@ -6,6 +6,7 @@ const regeneratorRuntime = require('../../lib/regenerator-runtime/runtime.js')
 
 Page({
   data: {
+    _id: "F00000000",
     isClose:true, //判断当前页面是打开还是返回页
     avatarUrl: './user-unlogin.png',
     userInfo: {},
@@ -99,6 +100,19 @@ Page({
         var hum = res.data.HeWeather6[0].now.hum;
         var pcpn = res.data.HeWeather6[0].now.pcpn;
         //var daily_forecast = res.data.HeWeather6[0].daily_forecast;
+        var advice = "今天有降雨，不适合晾晒哦~";
+        if(pcpn > 0){
+          advice = "今天有降雨，不适合晾晒哦~"
+        }
+        else if(txt == "晴" && tmp >= 30){
+          advice = "今天有暴晒，晾晒时间不宜过长~"
+        }
+        else{
+          advice = "今天可以晾晒哦~"
+        }
+        if(sc>=6){
+          advice = "今天风力很大，小心衣服被吹跑哦~"
+        }
         that.setData({
           tmp: tmp,
           txt: txt,
@@ -108,6 +122,7 @@ Page({
           sc: sc,
           hum: hum,
           pcpn: pcpn,
+          advice: advice,
           //daily_forecast: daily_forecast
         })
       },

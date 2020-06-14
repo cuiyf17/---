@@ -1,5 +1,8 @@
 /**app.wxss**/
 @import "./style/icons/iconfont.wxss";
+@import "./colorui/icon.wxss";
+@import "./colorui/main.wxss";
+
 
 page {
   height: 100%;

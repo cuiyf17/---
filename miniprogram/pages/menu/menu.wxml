@@ -13,6 +13,7 @@
 
 
 
+
  
  <view class='title'>
    <text class="titletext">面料</text>
@@ -25,11 +26,11 @@
     <navigator url="/pages/maliao/maliao" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/ma.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/yangrong.png'></image>
+    <navigator url="/pages/yangrong/yangrong" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/yangrong.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/xiehouyu/xiehouyu" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/zhensi.png'></image>
+    <navigator url="/pages/zhensi/zhensi" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/zhensi.png' mode="aspectFit"></image>
     </navigator>
   </view>
 
@@ -48,11 +49,11 @@
     <navigator url="/pages/maliao/maliao" open-type='navigate'>
       <image class='' style="border-radius:50%" src='/images/home/ma.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/baijiaxing/baijiaxing" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/yangrong.png'></image>
+    <navigator url="/pages/yangrong/yangrong" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/yangrong.png' mode="aspectFit"></image>
     </navigator>
-    <navigator url="/pages/xiehouyu/xiehouyu" open-type='navigate'>
-      <image class='' style="border-radius:50%" src='/images/home/zhensi.png'></image>
+    <navigator url="/pages/zhensi/zhensi" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/zhensi.png' mode="aspectFit"></image>
     </navigator>
   </view>
 

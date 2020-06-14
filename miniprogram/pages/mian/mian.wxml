@@ -1,6 +1,84 @@
-<view>材质：{{caizhi}}</view>
-<view>晾晒：{{liangshai}}</view>
-<view>手洗：{{shouxi}}</view>
-<view>机洗：{{jixi}}</view>
-<view>干洗：{{ganxi}}</view>
-<view>具体内容：{{txt}}</view>
+<view class="container"> 
+ <view class="category">
+  <image class='' style="border-radius:50%" src='/images/wenda/chuanse.jpg' mode="aspectFit" ></image>
+ </view>
+ 
+ <view class='title'>
+   <text class="titletext">串色</text>
+ </view>
+  <view class='titlesmall'>
+   <text class="titletextsmall">串色1</text>
+ </view>
+ 
+</view>
+
+<view class="divline"></view>
+
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-brown cur':''}}" wx:for="{{4}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+      Tab{{index}}
+    </view>
+  </view>
+
+</scroll-view>
+
+<scroll-view scroll-y>
+ <swiper class='swiper' bindchange='pagechange' current='{{TabCur}}'>
+   <swiper-item class="swiper-content">
+    <view>材质：{{caizhi}}</view>
+    <view>晾晒：{{liangshai}}</view>
+    <view>手洗：{{shouxi}}</view>
+    <view>机洗：{{jixi}}</view>
+    <view>干洗：{{ganxi}}</view>
+    <view>具体内容：{{txt}}</view>
+   </swiper-item>
+
+   <swiper-item class="swiper-content">
+    <view>材质：{{caizhi}}
+    </view>
+   </swiper-item>
+
+   <swiper-item class="swiper-content">
+    <view>材质：{{caizhi}}
+    </view>
+   </swiper-item>
+
+   <swiper-item class="swiper-content">
+    <view>材质：{{caizhi}}
+    </view>
+   </swiper-item>
+ </swiper>
+</scroll-view>
+
+<view class="text-gray text-sm zan">
+ <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+</view>
+
+
+<view class="cu-list menu-avatar comment solids-top">
+      <view class="cu-item">
+        <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+        <view class="content">
+          <view class="text-grey">莫甘娜</view>
+          <view class="text-gray text-content text-df">
+            凯尔，你被自己的光芒变的盲目。
+          </view>
+          
+          <view class="margin-top-sm flex justify-between">
+            <view class="text-gray text-df">2018年12月4日</view>
+            <view>
+              <text class="cuIcon-appreciatefill text-red"></text>
+              <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+
+<view>{{comments}}</view>
+<view>点击下图添加评论</view>
+<navigator url="/pages/writecomment/writecomment" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/solvedquestion.png' mode="aspectFit" ></image>
+    </navigator>

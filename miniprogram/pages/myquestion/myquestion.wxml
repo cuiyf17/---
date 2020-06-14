@@ -1,0 +1,6 @@
+<view>问题和回答：{{questions}}</view>
+
+<view>点击下图添加提问</view>
+<navigator url="/pages/writequestion/writequestion" open-type='navigate'>
+      <image class='' style="border-radius:50%" src='/images/home/solvedquestion.png' mode="aspectFit" ></image>
+    </navigator>

@@ -52,6 +52,29 @@ Page({
         })  
         } 
         })
+
+        db.collection("comment")
+      .where({blogid:that.data._id})
+      .field({
+        content: true,
+        commentdate: true,
+      })
+      .get({
+        success: function (res) {
+        var i = 0
+        var comments = new Array();
+        for(var i =0;i<res.data.length;i++){
+          var comment ={
+            content:res.data[i].content,
+            date:res.data[i].commentdate,
+          }
+          comments.push(comment)
+        }    
+        that.setData({
+        comments: comments,
+        })  
+        } 
+        })
       },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -64,7 +87,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    that.Load_jianyi()
   },
 
   /**
